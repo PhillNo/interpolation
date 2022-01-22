@@ -1,34 +1,33 @@
-function LinearInterp(fromX, toX, fromY, toY, x) //clamps output if x is not between fromX and toX. fromX must be less than toX.
+function LinearInterp(x_from, x_to, y_from, y_to, x)
 {
+    //Throw an exception is x is out of provided bounds. Necessary as an alternate exit point since an error
+    //code like -1 is also a potential valid output.
+    //But is it necessary that the interpolated point be between two arbitrary points on a line?
+    //if(x > Math.max(x_from, x_to) || x < Math.min(x_from, x_to)
+    //{
+    //    throw "x is out of provided bounds";
+    //}//if x is OOB
 
-  if (x <= fromX)
-  {
-    return fromY;
-  }
+    m = (y_to - y_from) / (x_to - x_from);
 
-  if (x >= toX)
-  {
-    return toY;
-  }
-
-  let m = (toY - fromY) / (toX - fromX);
-  return m * (x - fromX) + fromY;
+    return y_from + m * ( (x - x_from) / (x_to - x_from));
 
 }//LinearInterp
 
-function SigmoidInterp(fromX, toX, fromY, toY, x) //clamps output if x is not between fromX and toX. fromX must be less than toX.
+function SigmoidInterp(x_from, x_to, y_from, y_to, x, sharpness_coefficient = 12)
 {
+    //if(x > Math.max(x_from, x_to) || x < Math.min(x_from, x_to)
+    //{
+    //    throw "x is out of provided bounds"; //is this necessary since a Sigmoid goes on forever?
+    //}//if x is OOB
 
-  if (x <= fromX)
-  {
-    return fromY;
-  }
+    if (x_from > x_to) //swap values if x_from is greater than x_to
+    {
+        x_from = x_from ^ x_to;
+        x_to   = x_from ^ x_to;
+        x_from = x_from ^ x_to;
+    }
 
-  if (x >= toX)
-  {
-    return toY;
-  }
-
-  return (toY - fromY) / (1 + Math.exp( -12 * (x - fromX) / (toX - fromX) + 6) );
+    return (y_to - y_from) / (1 + Math.exp(-sharpness_coefficient * ((x - x_from) - 0.5 * (x_to - x_from)))) + y_from;
 
 }//SigmoidInterp
