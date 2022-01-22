@@ -10,7 +10,7 @@ function LinearInterp(x_from, x_to, y_from, y_to, x)
 
     m = (y_to - y_from) / (x_to - x_from);
 
-    return y_from + m * ( (x - x_from) / (x_to - x_from));
+    return y_from + m * (x - x_from);
 
 }//LinearInterp
 
