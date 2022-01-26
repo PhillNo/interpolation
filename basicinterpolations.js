@@ -1,21 +1,14 @@
-@@ -1,26 +1,95 @@
-function LinearInterp(x_from, x_to, y_from, y_to, x)
+// todo for each query, return the first point that can be interpolated, or pass through entire input set and return all points?
+
 function Interpolate(x_arr, y_arr, x, method, additional_params=undefined)
 {
-    //Throw an exception is x is out of provided bounds. Necessary as an alternate exit point since an error
-    //code like -1 is also a potential valid output.
-    //But is it necessary that the interpolated point be between two arbitrary points on a line?
-    //if(x > Math.max(x_from, x_to) || x < Math.min(x_from, x_to)
-    //{
-    //    throw "x is out of provided bounds";
-    //}//if x is OOB
     switch (method)
     {
         case "linear":
             return LinearInterp(x_arr, y_arr, x);
             
         case "sigmoid":
-            if (additional_params["sharpness_coefficient"] != undefined)
+            if (additional_params.hasOwnProperty("sharpness_coefficient"))
             {
                 return SigmoidInterp(x_arr, y_arr, x, additional_params["sharpness_coefficient"]);
             }
@@ -24,7 +17,7 @@ function Interpolate(x_arr, y_arr, x, method, additional_params=undefined)
                 return SigmoidInterp(x_arr, y_arr, x);
             }
     }
-}
+}//Interpolate
 
 function LinearInterp(x_arr, y_arr, x)
 {
@@ -65,9 +58,6 @@ function LinearInterpSingleSegment(x_from, y_from, x_to, y_to, x)
     
 }//LinearInterpSingleSegment
 
-}//LinearInterp
-
-function SigmoidInterp(x_from, x_to, y_from, y_to, x, sharpness_coefficient = 12)
 function SigmoidInterp(x_arr, y_arr, x, sharpness_coefficient = 12)
 {
     //if(x > Math.max(x_from, x_to) || x < Math.min(x_from, x_to)
@@ -109,13 +99,10 @@ function SigmoidInterpSingleSegment(x_from, y_from, x_to, y_to, x, sharpness_coe
     if (x_from > x_to) //swap values if x_from is greater than x_to
     {
         x_from = x_from ^ x_to;
-@ -28,6 +97,7 @@ function SigmoidInterp(x_from, x_to, y_from, y_to, x, sharpness_coefficient = 12
+        x_to   = x_from ^ x_to;
         x_from = x_from ^ x_to;
     }
 
-    return (y_to - y_from) / (1 + Math.exp(-sharpness_coefficient * ((x - x_from) - 0.5 * (x_to - x_from)))) + y_from;
     return (y_to - y_from) / (1 + Math.exp(-sharpness_coefficient * ((x - x_from) - 0.5 * (x_to - x_from)))) + y_from;    
-
 }//SigmoidInterpSingleSegment
 
-}//SigmoidInterp
