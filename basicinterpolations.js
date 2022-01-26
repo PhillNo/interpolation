@@ -8,7 +8,7 @@ function Interpolate(x_arr, y_arr, x, method, additional_params=undefined)
             return LinearInterp(x_arr, y_arr, x);
             
         case "sigmoid":
-            if (additional_params.hasOwnProperty("sharpness_coefficient"))
+            if (additional_params.hasOwnProperty("sharpness_coefficient")) //should this JSON trickle down to SigmoidInterp instead?
             {
                 return SigmoidInterp(x_arr, y_arr, x, additional_params["sharpness_coefficient"]);
             }
@@ -23,7 +23,7 @@ function LinearInterp(x_arr, y_arr, x)
 {
     if (x_arr.length == undefined || y_arr.length == undefined || x_arr.length != y_arr.length)
     {
-        throw "expected input arrays of equal length";
+        throw "LinarInterp expects input arrays of equal length.";
     }
     
     let interpolated_vals = [];
@@ -46,7 +46,7 @@ function LinearInterpSingleSegment(x_from, y_from, x_to, y_to, x)
     {
         if (y_from != y_to)
         {
-            throw "can not interpolate over vertical line"
+            throw "Can not interpolate over vertical line."
         }
         
         return y_from;
@@ -62,7 +62,7 @@ function SigmoidInterp(x_arr, y_arr, x, sharpness_coefficient = 12)
 {
     if (x_arr.length == undefined || y_arr.length == undefined || x_arr.length != y_arr.length)
     {
-        throw "expected input arrays of equal length";
+        throw "SigmoidInterp expects input arrays of equal length.";
     }
     
     let interpolated_vals = [];
@@ -85,7 +85,7 @@ function SigmoidInterpSingleSegment(x_from, y_from, x_to, y_to, x, sharpness_coe
     {
         if (y_from != y_to)
         {
-            throw "can not interpolate over vertical line"
+            throw "Can not interpolate over vertical line."
         }
         
         return y_from;
