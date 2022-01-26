@@ -36,7 +36,7 @@ function LinearInterpSingleSegment(x_from, y_from, x_to, y_to, x, additional_par
     {
         if (y_from != y_to)
         {
-            return NaN;
+            return NaN; //does not interpolate over verical line
         }
         else
         {
@@ -63,7 +63,7 @@ function SigmoidInterpSingleSegment(x_from, y_from, x_to, y_to, x)
     {
         if (y_from != y_to)
         {
-            return NaN;
+            return NaN; //does not interpolate over verical line
         }
         
         return y_from;
