@@ -22,7 +22,7 @@ function Interpolate(x_arr, y_arr, x, method, additional_params=undefined)
     
     for (let i = 0; i < x_arr.length - 1; i++)
     {
-        interpolated_vals.push(Interp_Algorithm(x_arr[i], y_arr[i], x_arr[i + 1], y_arr[i + 1], x, additional_params));
+        interpolated_vals.push(Interp_Algorithm(x_arr[i], y_arr[i], x_arr[i + 1], y_arr[i + 1], x, additional_params)); // todo put this loop in each case
     }
     
     return interpolated_vals;
