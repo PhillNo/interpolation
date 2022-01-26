@@ -60,10 +60,6 @@ function LinearInterpSingleSegment(x_from, y_from, x_to, y_to, x)
 
 function SigmoidInterp(x_arr, y_arr, x, sharpness_coefficient = 12)
 {
-    //if(x > Math.max(x_from, x_to) || x < Math.min(x_from, x_to)
-    //{
-    //    throw "x is out of provided bounds"; //is this necessary since a Sigmoid goes on forever?
-    //}//if x is OOB
     if (x_arr.length == undefined || y_arr.length == undefined || x_arr.length != y_arr.length)
     {
         throw "expected input arrays of equal length";
