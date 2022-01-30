@@ -1,0 +1,73 @@
+<!doctype HTML>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Phill No">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhillNo</title>
+<script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>
+<script src="basicinterpolations.js"></script>
+
+<style>
+head, body
+{
+    max-width:  100%;
+    background: black;
+    color:      #aaaaaa;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="flex_container" style="display: flex; max-width: 100%; margin: 0 auto; flex-direction: row;">
+    <div style="flex: 1;" id="figure_div"></div>
+</div>
+
+<script>
+var x = [0, 0.5, 1, 2];
+var y = [0, 0.5, 2, 1];
+
+var queries         = [];
+var linear_interp   = [];
+var sigmoid_interp  = [];
+
+for (let i = 0; i < 2; i += 0.01)
+{
+    queries.push(i);
+}
+
+linear_interp  = Interpolate(x, y, queries, "linear");
+sigmoid_interp = Interpolate(x, y, queries, "sigmoid");
+
+var trace1 = 
+{
+    x: x,
+    y: y,
+    name: "sample points",
+    mode: "markers"
+};
+
+var trace2 = 
+{
+    x: queries,
+    y: linear_interp,
+    name: "linear",
+    mode: "scatter"
+};
+
+var trace3 = 
+{
+    x: queries,
+    y: sigmoid_interp,
+    name: "sigmoid",
+    mode: "scatter"
+};
+
+var layout1 = {title: {text:''}}
+Plotly.newPlot("figure_div", [trace1, trace2, trace3], layout1);
+
+</script>
+</body>
