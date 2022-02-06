@@ -95,8 +95,8 @@ html, body
 
 <br><br><br><br><br><br><br><br><br>
 
-<div class="flex_row" style="display: flex; flex-direction: row; justify-content: center;">
-    <div id="parametric_interp" style="flex: 1; max-width: 50%"></div>
+<div class="flex_row" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+    <div id="parametric_interp" style="min-width: 40%; width: 500px;"></div>
 </div>
 
 <br><br><br><br><br><br><br><br><br>
@@ -104,12 +104,12 @@ html, body
 <p>Disappointed?</p>
 
 <br>
-
 <p>Aside from a few small differences, this looks like the same general shape. Apparently there are more points at the "vertices" of this spiral. This makes sense because, if it was decomposed into the component x- and y- sigmoid curves, interpolated values would be more sparse where the slope is steepest.</p>
 
 <br>
 
-<p>But why are the segments between sample points still straight? The slope of a line is constant, and for each line segment in the spiral, that means the change in any two y-values is proportional to the change in corresponding x-values. The change in x- or y-values when interpolated over t is not constant, but the change in y over some interval is always proportional to the change in x over that same interval. In other words, the derivates are proportional to each other. This is a property of the sigmoid function used to computer interpolated values.</p>
+<p>But why are the segments between sample points still straight? The slope of a line is constant, which means for each line segment in the spiral, the change in any two y-values is proportional to the change in corresponding x-values. The change in x- or y-values when interpolated over t is not constant, but the change in y on some interval over the change in x on that same interval is the same for all intervals. In other words, the derivates are proportional to each other. f’(t) = k*g’(t) for all t. This is a property of the sigmoid function used to compute interpolated values.</p>
+
 
 <br><br><br><br>
 
@@ -117,10 +117,10 @@ html, body
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<div class="flex_row" style="display: flex; flex-direction: row;">
-    <div id="awesome_x" style="flex: 1;"></div>
-    <div id="awesome_y" style="flex: 1;"></div>
-    <div id="awesome_x_y" style="flex: 1;"></div>
+<div class="flex_row" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+    <div id="awesome_x"   style="min-width: 30%; width: 500px;"></div>
+    <div id="awesome_y"   style="min-width: 30%; width: 500px;"></div>
+    <div id="awesome_x_y" style="min-width: 30%; width: 500px;"></div>
 </div>
 
 <br><br><br><br><br><br>
