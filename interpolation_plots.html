@@ -127,6 +127,8 @@ html, body
 
 
 <script>
+window.onload = function()
+{
 var t           = [];
 var queries     = [];
 
@@ -261,7 +263,7 @@ Plotly.newPlot("awesome_y", [trace2], layout1);
 
 layout1 = {title: {text: "(x, y)"}};
 Plotly.newPlot("awesome_x_y", [trace3], layout1);
-
+}
 
 </script>
 </body>
