@@ -26,6 +26,31 @@ html, body
     color:      #ffffff;
 }
 
+/* For Mobile */
+@media all and (max-width: 540px)
+{
+  html, body
+  {
+    padding: 0;
+  }
+
+  .plot_class
+  {
+    width: 100vw;
+    background: red;
+    border: 2px red;
+  }
+}
+
+/* For Tablets */
+@media all and (min-width: 540px) and (max-width: 780px)
+{
+  html, body
+  {
+    padding: 10px;
+  }
+}
+
 </style>
 </head>
 
@@ -46,9 +71,9 @@ html, body
 <br><br><br>
 
 <div class="flex_row" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
-    <div id="x_to_t" style="min-width: 33%; width: 300px;"></div>
-    <div id="y_to_t" style="min-width: 33%; width: 300px;"></div>
-    <div id="y_to_x" style="min-width: 33%; width: 300px;"></div>
+    <div class="plot_class" id="x_to_t" style="min-width: 33%;"></div>
+    <div class="plot_class" id="y_to_t" style="min-width: 33%;"></div>
+    <div class="plot_class" id="y_to_x" style="min-width: 33%;"></div>
 </div>
 
 <br><br><br>
@@ -58,8 +83,8 @@ html, body
 <br><br><br>
 
 <div class="flex_row" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
-    <div id="x_interp" style="min-width: 50%; width: 500px;"></div>
-    <div id="y_interp" style="min-width: 50%; width: 500px;"></div>
+    <div class="plot_class" id="x_interp" style="min-width: 50%;"></div>
+    <div class="plot_class" id="y_interp" style="min-width: 50%;"></div>
 </div>
 
 <br><br><br>
@@ -97,7 +122,7 @@ html, body
 <br><br><br><br><br><br><br><br><br>
 
 <div class="flex_row" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
-    <div id="parametric_interp" style="min-width: 40%; width: 500px;"></div>
+    <div class="plot_class" id="parametric_interp" style="min-width: 40%;"></div>
 </div>
 
 <br><br><br><br><br><br><br><br><br>
@@ -119,9 +144,9 @@ html, body
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <div class="flex_row" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
-    <div id="awesome_x"   style="min-width: 33%; width: 300px;"></div>
-    <div id="awesome_y"   style="min-width: 33%; width: 300px;"></div>
-    <div id="awesome_x_y" style="min-width: 33%; width: 300px;"></div>
+    <div class="plot_class" id="awesome_x"   style="min-width: 33%;"></div>
+    <div class="plot_class" id="awesome_y"   style="min-width: 33%;"></div>
+    <div class="plot_class" id="awesome_x_y" style="min-width: 33%;"></div>
 </div>
 
 <br><br><br><br><br><br>
